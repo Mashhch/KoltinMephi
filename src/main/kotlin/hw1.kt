@@ -1,6 +1,6 @@
 interface motor {
-    abstract val typeOfMotor: String
-    abstract val power: Double
+    val typeOfMotor: String
+    val power: Double
     fun getInfoMotor() {
         println("type of motor: $typeOfMotor")
         println("power of motor: $power")
@@ -88,7 +88,7 @@ sealed class transport(val speed: Double) : motor {
             println("number of wheels: $numberOfWheels")
             println("number of passengers: $numberOfPassengers")
             println("number of conductors: $numberOfConductors")
-            println("number of carrige: $numberOfCarrige")
+            println("number of carriage: $numberOfCarrige")
         }
     }
 
@@ -105,7 +105,7 @@ sealed class transport(val speed: Double) : motor {
 }
 
 
-class lastochka(numberOfConductor: Int, numberOfCarrige: Int, speed: Double) : transport.train(
+class lastochka(numberOfCarrige: Int, speed: Double) : transport.train(
     numberOfCarrige,
     speed
 ) {
@@ -133,7 +133,7 @@ fun myinterface() {
             "1" -> {
                 println("enter speed:")
                 while (true) {
-                    var input = readln()
+                    val input = readln()
                     if (input.toDoubleOrNull() == null) {
                         println("it's not number! enter again")
                         continue
@@ -192,8 +192,9 @@ fun myinterface() {
                         print("it's not number! enter again")
                         continue
                     } else {
-                        val train = transport.train(input, speed)
-
+                        val lastochka = lastochka(input, speed)
+                        lastochka.getInfo()
+                        break
                     }
                 }
             }
@@ -201,7 +202,7 @@ fun myinterface() {
             "4" -> {
                 println("enter speed:")
                 while (true) {
-                    var input = readln()
+                    val input = readln()
                     if (input.toDoubleOrNull() == null) {
                         println("it's not number! enter again")
                         continue
@@ -216,7 +217,7 @@ fun myinterface() {
             "5" -> {
                 println("enter speed:")
                 while (true) {
-                    var input = readln()
+                    val input = readln()
                     if (input.toDoubleOrNull() == null) {
                         println("it's not number! enter again")
                         continue
